@@ -66,6 +66,6 @@ add_kmeans("sqft_lot15", 3, plot=False)
 
 
 df2.to_excel(path+os.sep+"interin_data"+os.sep+"database_discrete.xlsx")
-df2.to_csv(path+os.sep+"interin_data"+os.sep+"database_discrete.csv")
+df2.to_csv(path+os.sep+"interin_data"+os.sep+"database_discrete.csv",index=False)
 
 print("oi")
