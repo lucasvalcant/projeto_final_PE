@@ -12,10 +12,10 @@ x_train = train.drop(['caro'], axis=1).values
 decision_tree = tree.DecisionTreeClassifier(max_depth = 20)
 decision_tree.fit(x_train, y_train)
 
-with open("discrete.dot", 'w') as f:
+with open("discrete_10.dot", 'w') as f:
     f = tree.export_graphviz(decision_tree,
                              out_file=f,
-                             max_depth=20,
+                             max_depth=10,
                              impurity= True,
                              feature_names = list(train.drop(['caro'], axis=1)),
                              class_names = ['False', 'True'],
