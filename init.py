@@ -9,6 +9,8 @@ path = os.path.abspath(__file__)
 path = os.path.dirname(path)
 print(path)
 df = pd.read_excel(path+os.sep+"raw_data"+os.sep+"database.xlsx")
+
+
 def add_kmeans(column,cluster,plot = False):
 
     kmeans = KMeans(n_clusters=cluster, random_state=0)
@@ -58,6 +60,6 @@ add_kmeans("yr_built", 3, plot=False)
 add_kmeans("yr_renovated", 2, plot=True)
 add_kmeans("sqft_living15", 3, plot=True)
 add_kmeans("sqft_lot15", 3, plot=True)
-#df.to_excel(path+os.sep+"interin_data"+os.sep+"database_latlong.xlsx")
+df.to_excel(path+os.sep+"interin_data"+os.sep+"database_discrete.xlsx")
 
 print("oi")
