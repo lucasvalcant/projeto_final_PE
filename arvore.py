@@ -9,7 +9,7 @@ from sklearn import tree
 train = pd.read_csv('interin_data/database_discrete.csv')
 y_train = train['caro']
 x_train = train.drop(['caro'], axis=1).values
-decision_tree = tree.DecisionTreeClassifier(max_depth = 20)
+decision_tree = tree.DecisionTreeClassifier(max_depth = 10)
 decision_tree.fit(x_train, y_train)
 
 with open("discrete_10.dot", 'w') as f:
