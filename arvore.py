@@ -1,12 +1,9 @@
 import pandas as pd
 import os
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
 from sklearn import tree
 
-train = pd.read_csv('interin_data/database_discrete.csv')
+train = pd.read_csv('interin_data/database_train.csv')
 y_train = train['caro']
 x_train = train.drop(['caro'], axis=1).values
 decision_tree = tree.DecisionTreeClassifier(max_depth = 20)

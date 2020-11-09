@@ -33,7 +33,7 @@ def add_kmeans(column,cluster,plot = False):
         plt.show()
 
 
-def add_2kmeans(column1,column2,cluster):
+def add_2kmeans(column1,column2,cluster, plot = False):
 
     kmeans = KMeans(n_clusters=cluster, random_state=0)
     df_cuted = df[[column1,column2]].values
@@ -45,10 +45,10 @@ def add_2kmeans(column1,column2,cluster):
         cuted_list.append(discrete[0])
 
 
-    df.insert(0, "discretization_"+column1+"_"+column2, cuted_list, True)
+    df2.insert(0, "discretization_"+column1+"_"+column2, cuted_list, True)
 
 
-add_2kmeans("lat", "long", 2)
+add_2kmeans("lat", "long", 2, plot=False)
 add_kmeans("sqft_living", 2, plot=False)
 add_kmeans("sqft_lot", 2, plot=False)
 add_kmeans("bathrooms", 2, plot=False)
@@ -65,7 +65,12 @@ add_kmeans("sqft_living15", 2, plot=False)
 add_kmeans("sqft_lot15", 2, plot=False)
 
 
-df2.to_excel(path+os.sep+"interin_data"+os.sep+"database_discrete.xlsx",index=False)
-df2.to_csv(path+os.sep+"interin_data"+os.sep+"database_discrete.csv", index=False)
 
+
+df2 = df2[:-10]
+df_validation = df2.tail(10)
+df_validation.to_excel(path+os.sep+"interin_data"+os.sep+"database_validation.xlsx",index=False)
+df_validation.to_csv(path+os.sep+"interin_data"+os.sep+"database_validation.csv", index=False)
+df2.to_excel(path+os.sep+"interin_data"+os.sep+"database_train.xlsx",index=False)
+df2.to_csv(path+os.sep+"interin_data"+os.sep+"database_train.csv", index=False)
 print("oi")
