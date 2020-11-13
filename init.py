@@ -27,7 +27,7 @@ def add_kmeans(column, cluster, plot=False):
         discrete = kmeans.predict([line])
         cuted_list.append(discrete[0])
 
-    df2.insert(0, "disc_" + column, cuted_list, True)
+    df.insert(0, "disc_" + column, cuted_list, True)
     x = range(0, len(df[["price"]]))
     if plot:
         sns.scatterplot(x=x, y=column, data=df, hue="disc_" + column)
@@ -44,24 +44,26 @@ def add_2kmeans(column1, column2, cluster, plot=False):
         discrete = kmeans.predict([line])
         cuted_list.append(discrete[0])
 
-    df2.insert(0, "disc_" + column1 + "_" + column2, cuted_list, True)
+    df.insert(0, "disc_" + column1 + "_" + column2, cuted_list, True)
+    if plot:
+        sns.scatterplot(x=column1, y=column2, data=df, hue="disc_"+ column1 + "_" + column2)
+        plt.show()
 
-
-add_2kmeans("lat", "long", 2, plot=False)
-add_kmeans("sqft_living", 2, plot=False)
-add_kmeans("sqft_lot", 2, plot=False)
-add_kmeans("bathrooms", 2, plot=False)
-add_kmeans("bedrooms", 2, plot=False)
-add_kmeans("floors", 2, plot=False)
-add_kmeans("view", 2, plot=False)
-add_kmeans("condition", 2, plot=False)
-add_kmeans("grade", 3, plot=False)
-add_kmeans("sqft_above", 2, plot=False)
-add_kmeans("sqft_basement", 2, plot=False)
-add_kmeans("yr_built", 2, plot=False)
-add_kmeans("yr_renovated", 2, plot=False)
-add_kmeans("sqft_living15", 2, plot=False)
-add_kmeans("sqft_lot15", 2, plot=False)
+add_2kmeans("lat", "long", 2, plot=True)
+add_kmeans("sqft_living", 2, plot=True)
+add_kmeans("sqft_lot", 2, plot=True)
+add_kmeans("bathrooms", 2, plot=True)
+add_kmeans("bedrooms", 2, plot=True)
+add_kmeans("floors", 2, plot=True)
+add_kmeans("view", 2, plot=True)
+add_kmeans("condition", 2, plot=True)
+add_kmeans("grade", 3, plot=True)
+add_kmeans("sqft_above", 2, plot=True)
+add_kmeans("sqft_basement", 2, plot=True)
+add_kmeans("yr_built", 2, plot=True)
+add_kmeans("yr_renovated", 2, plot=True)
+add_kmeans("sqft_living15", 2, plot=True)
+add_kmeans("sqft_lot15", 2, plot=True)
 
 #df0 = df2.loc[df2["caro"]==0]
 #df1 = df2.loc[df2["caro"]==1]
